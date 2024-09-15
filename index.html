@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        // when the weather button is clicked, weather data is populated
+        $("button.weatherButton").click(function () {
+          fetch(
+            "https://api.weatherstack.com/current?access_key=2ca83c59907c8b22bc2ea7e5db923c39&query=Los Angeles&units=f"
+          )
+            .then((weatherResponse) => {
+              return weatherResponse.json();
+            })
+            .then((data) => {
+              console.log(data);
+              // UV index
+              const UV = data.current.uv_index;
+              $("#UV").append(UV);
+
+              // Cloud Coverage
+              const clouds = data.current.cloudcover;
+              $("#clouds").append(clouds + "%");
+
+              // Temperature
+              const temp = data.current.temperature;
+              $("#temp").append(temp);
+
+              // Feels Like
+              const feelsLike = data.current.feelslike;
+              $("#feelsLike").append(feelsLike);
+            })
+            .catch((error1) => console.log(error1));
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <h1>Should you be wearing sunscreen today?</h1>
+
+    <button class="weatherButton" type="button">Click here for weather</button>
+    <div id="UV">UV index:&ensp;</div>
+    <div id="clouds">Cloud coverage:&ensp;</div>
+    <div id="temp">Current temperature:&ensp;</div>
+    <div id="feelsLike">Feels like:&ensp;</div>
+  </body>
+</html>

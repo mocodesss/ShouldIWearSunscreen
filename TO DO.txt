@@ -1,0 +1,9 @@
+TO DO:
+
+- Create styling with CSS.
+- Add logic with JavaScript to offer a real suggestion... like if certain value is over X, then yes... and "don't get tricked by cloud coverage today".
+- Add ability to input Location variable... or at least drop down of major cities or something... handle that in some way that will teach ou something.
+
+NOTES:
+
+- API documentation: https://weatherstack.com/documentation
